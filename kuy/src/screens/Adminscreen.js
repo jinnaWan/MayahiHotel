@@ -8,6 +8,7 @@ import { Divider, Space, Tag } from 'antd';
 import { useParams } from 'react-router-dom';
 import Chartscreen from './Chartscreen';
 import TransactionScreen from './Transactionscreen';
+import Alluserscreen from './Alluserscreen';
 
 const { TabPane } = Tabs;
 
@@ -45,6 +46,9 @@ function Adminscreen() {
                 </TabPane>
                 <TabPane tab="All transactions" key="3">
                     <TransactionScreen />
+                </TabPane>
+                <TabPane tab="All Users" key="4">
+                    <Alluserscreen />
                 </TabPane>
             </Tabs>
         </div>

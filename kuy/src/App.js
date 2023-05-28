@@ -13,6 +13,7 @@ import Boardgamescreen from './screens/Boardgamescreen';
 // import TransactionScreen from './screens/Transactionscreen';
 // import Chartscreen from './screens/Chartscreen';
 import Adminscreen from './screens/Adminscreen';
+// import Alluserscreen from './screens/Alluserscreen';
 
 function App() {
   return (
@@ -30,8 +31,9 @@ function App() {
           <Route path="/event" exact element={<Eventscreen/>}></Route>
           <Route path="/boardgame" exact element={<Boardgamescreen/>}></Route>
           {/* <Route path="/transaction" exact element={<TransactionScreen/>}></Route>
-          <Route path="/chart" exact element={<Chartscreen/>}></Route> */}
-          <Route path="/admin" exact element={<Adminscreen/>}></Route>
+          <Route path="/chart" exact element={<Chartscreen/>}></Route>
+          <Route path="/allusers" exact element={<Alluserscreen/>}></Route> */}
+          <Route path="/admin/:key" exact element={<Adminscreen/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

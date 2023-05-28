@@ -45,7 +45,7 @@ function Navbar() {
                                     <a class="dropdown-item" href="/boardgame">Boardgame Borrowing</a>
                                     <a class="dropdown-item" href="/event">Event Requesting</a>
                                     <a class="dropdown-item" href="https://www.google.co.th/maps/dir/13.9508121,7.6711736//@13.9508272,7.6706595,19z?entry=ttu">Shutter Service</a></div>)}
-                                    {currentUser.isAdmin && <a class="dropdown-item" href="/admin">Admin</a>}
+                                    {currentUser.isAdmin && <a class="dropdown-item" href="/admin/2">Admin</a>}
                                     <a class="dropdown-item" href="/" onClick={logout}>Log out</a>
                                 </div>
                             </div>

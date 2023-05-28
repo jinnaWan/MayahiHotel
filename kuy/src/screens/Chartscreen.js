@@ -10,6 +10,8 @@ function Chartscreen() {
   const [paymentPop, setPaymentPop] = useState([]);
   const [totalBookings, setTotalBookings] = useState(0);
   const [totalBookingsByRoomType, setTotalBookingsByRoomType] = useState([]);
+  const [foodTypePopularity, setFoodTypePopularity] = useState([]);
+  const [boardgamePopularity, setBoardgamePopularity] = useState([]);
 
   const user = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -40,6 +42,12 @@ function Chartscreen() {
         const { data: response6 } = await axios.get('/api/bookings/totalBookingsByRoomType');
         setTotalBookingsByRoomType(response6);
         console.log(response6);
+        const { data: response7 } = await axios.get('/api/foods/getFoodTypePopularity');
+        setFoodTypePopularity(response7);
+        console.log(response7);
+        const { data: response8 } = await axios.get('/api/borrowboardgames/getBoardgamePopularity');
+        setBoardgamePopularity(response8);
+        console.log(response8);
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -49,10 +57,11 @@ function Chartscreen() {
     fetchData();
   }, []);
 
-  // Sort the data in descending order
-  const sortedData = Object.entries(data).sort((a, b) => b[1] - a[1]);
-  // Convert the sorted data back to an object
-  const sortedDataObject = Object.fromEntries(sortedData);
+  //sort function
+  const sortObject = (obj) => {
+    const sortedData = Object.entries(obj).sort((a, b) => b[1] - a[1]);
+    return Object.fromEntries(sortedData);
+  };
 
   return (
     <div>
@@ -67,7 +76,45 @@ function Chartscreen() {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(sortedDataObject).map(([key, value]) => (
+              {Object.entries(sortObject(data)).map(([key, value]) => (
+                <tr key={key}>
+                  <td>{key}</td>
+                  <td>{value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="col-md-10 bs">
+          <h2>Food Category Popularity</h2>
+          <table className="table table-striped table-bordered table-responsive-sm">
+            <thead>
+              <tr>
+                <th>Food Category</th>
+                <th>Number of Orders</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(sortObject(foodTypePopularity)).map(([key, value]) => (
+                <tr key={key}>
+                  <td>{key}</td>
+                  <td>{value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="col-md-10 bs">
+          <h2>Boardgame Category Popularity</h2>
+          <table className="table table-striped table-bordered table-responsive-sm">
+            <thead>
+              <tr>
+                <th>Boardgame Category</th>
+                <th>Number of Borrowings</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(sortObject(boardgamePopularity)).map(([key, value]) => (
                 <tr key={key}>
                   <td>{key}</td>
                   <td>{value}</td>
