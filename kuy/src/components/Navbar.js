@@ -1,7 +1,22 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
+import axios from 'axios';
 
 function Navbar() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const [haveBooking, setHaveBooking] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const { data: response } = await axios.get(`/api/bookings/isUserHaveBooking/${currentUser._id}`);
+                setHaveBooking(response);
+                console.log(response);
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+        fetchData();
+    }, []);
 
     function logout() {
         localStorage.removeItem('currentUser');
@@ -26,11 +41,11 @@ function Navbar() {
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="/profile/1">Profile</a>
                                     <a class="dropdown-item" href="/home">Booking</a>
-                                    <a class="dropdown-item" href="/food">Food Ordering</a>
+                                    {haveBooking==true && (<div><a class="dropdown-item" href="/food">Food Ordering</a>
                                     <a class="dropdown-item" href="/boardgame">Boardgame Borrowing</a>
                                     <a class="dropdown-item" href="/event">Event Requesting</a>
-                                    <a class="dropdown-item" href="https://www.google.co.th/maps/dir/13.9508121,7.6711736//@13.9508272,7.6706595,19z?entry=ttu">Shutter Service</a>
-                                    {currentUser.isAdmin && <a class="dropdown-item" href="/transaction">Admin</a>}
+                                    <a class="dropdown-item" href="https://www.google.co.th/maps/dir/13.9508121,7.6711736//@13.9508272,7.6706595,19z?entry=ttu">Shutter Service</a></div>)}
+                                    {currentUser.isAdmin && <a class="dropdown-item" href="/admin">Admin</a>}
                                     <a class="dropdown-item" href="/" onClick={logout}>Log out</a>
                                 </div>
                             </div>

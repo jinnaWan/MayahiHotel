@@ -122,7 +122,7 @@ const Homesceen = () => {
                     <RangePicker format='DD-MM-YYYY' onChange={handleDateChange} />
                 </div>
                 <div className='col-md-5'>
-                    <input type='text' placeholder='Search by food name' className='form-control'
+                    <input type='text' placeholder='Search by room name' className='form-control'
                         value={searchkey} onChange={(e) => { setSearchkey(e.target.value) }} onKeyUp={filterBySearch} />
                 </div>
                 <div className='col-md-2'>
@@ -141,7 +141,6 @@ const Homesceen = () => {
                             <Room room={room} fromDate={fromDate} toDate={toDate} />
                         </div>)))
                 }
-
             </div>
         </div>
     )

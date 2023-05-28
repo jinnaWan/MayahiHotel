@@ -16,6 +16,10 @@ function Registerscreen() {
     const [success, setSuccess] = useState(false)
 
     async function register(){
+        if(name === '' || email === '' || password === '' || cpassword === ''){
+            alert('Please fill all the fields')
+            return
+        }
         if(password === cpassword){
             var user = {name,email,password}
             try{
