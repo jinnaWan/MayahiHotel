@@ -103,6 +103,73 @@ router.delete("/deleteTransaction/:id", async (req, res) => {
         return res.status(400).send({ error: err });
     }
 });
+
+router.get("/getTotalAmount", async (req, res) => {
+    try {
+        const transaction = await transactionModel.find();
+        var total = 0;
+        for (var i = 0; i < transaction.length; i++) {
+            total += transaction[i].amount;
+        }
+        return res.send({ total: total });
+    } catch (err) {
+        return res.status(400).send({ error: err });
+    }
+});
+
+router.get("/getTotalAmountByEachCategory", async (req, res) => {
+    try {
+        const transaction = await transactionModel.find();
+        var totalRoomBooking = 0;
+        var totalFoodOrder = 0;
+        var totalBoardgameBorrowing = 0;
+        for (var i = 0; i < transaction.length; i++) {
+            if (transaction[i].category === "Room Booking") {
+                totalRoomBooking += transaction[i].amount;
+            }
+            if (transaction[i].category === "Food Order") {
+                totalFoodOrder += transaction[i].amount;
+            }
+            if (transaction[i].category === "Boardgame Borrowing") {
+                totalBoardgameBorrowing += transaction[i].amount;
+            }
+        }
+        return res.send({
+            totalRoomBooking: totalRoomBooking,
+            totalFoodOrder: totalFoodOrder,
+            totalBoardgameBorrowing: totalBoardgameBorrowing
+        });
+    } catch (err) {
+        return res.status(400).send({ error: err });
+    }
+});
+
+router.get("/getPaymentMethodPopularity", async (req, res) => {
+    try {
+        const transaction = await transactionModel.find();
+        var cash = 0;
+        var creditcard = 0;
+        var promptpay = 0;
+        for (var i = 0; i < transaction.length; i++) {
+            if (transaction[i].paymentMethod[0].paymentMethod === "Cash") {
+                cash += 1;
+            }
+            if (transaction[i].paymentMethod[0].paymentMethod === "Credit-Card") {
+                creditcard += 1;
+            }
+            if (transaction[i].paymentMethod[0].paymentMethod === "PromptPay") {
+                promptpay += 1;
+            }
+        }
+        return res.send({
+            cash: cash,
+            creditcard: creditcard,
+            promptpay: promptpay
+        });
+    } catch (err) {
+        return res.status(400).send({ error: err });
+    }
+});
         
 
 module.exports = router;

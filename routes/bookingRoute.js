@@ -93,4 +93,46 @@ router.get('/getRoomTypePopularity', async (req, res) => {
     }
 });
 
+router.get('/totalBookings', async (req, res) => {
+    try {
+      const bookings = await bookingModel.find();
+      const totalBookings = Object.keys(bookings).length.toString();
+      res.send(totalBookings);
+    } catch (error) {
+      return res.status(400).json({ message: error.message });
+    }
+  });
+  
+
+router.get('/totalBookingsByRoomType', async (req, res) => {
+    try {
+        const bookings = await bookingModel.find();
+        //find all distinct roomtypes from roomModel
+        const roomTypes = await roomModel.distinct('type');
+        const roomTypePopularity = {};
+        roomTypes.forEach(roomType => {
+            roomTypePopularity[roomType] = 0;
+        });
+        bookings.forEach(booking => {
+            roomTypePopularity[booking.roomtype] += 1;
+        });
+        res.send(roomTypePopularity);
+    } catch (error) {
+        return res.status(400).json({ message: error.message });
+    }
+});
+
+router.get('/isUserHaveBooking/:userid', async (req, res) => {
+    try {
+        const bookings = await bookingModel.find({ userid: req.params.userid });
+        const totalBookings = Object.keys(bookings).length.toString();
+        if(totalBookings > 0)
+            res.send(true);
+        else
+            res.send(false);
+    } catch (error) {
+        return res.status(400).json({ message: error.message });
+    }
+});
+
 module.exports = router;
