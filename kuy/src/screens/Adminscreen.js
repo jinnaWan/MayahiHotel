@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import Chartscreen from './Chartscreen';
 import TransactionScreen from './Transactionscreen';
 import Alluserscreen from './Alluserscreen';
+import Requestscreen from './Requestscreen';
 
 const { TabPane } = Tabs;
 
@@ -49,6 +50,9 @@ function Adminscreen() {
                 </TabPane>
                 <TabPane tab="All Users" key="4">
                     <Alluserscreen />
+                </TabPane>
+                <TabPane tab="All Event Requests" key="5">
+                    <Requestscreen />
                 </TabPane>
             </Tabs>
         </div>

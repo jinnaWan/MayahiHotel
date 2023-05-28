@@ -148,7 +148,7 @@ function TransactionScreen() {
                                                     'Your transaction has been cancelled.',
                                                     'success'
                                                 ).then((result) => {
-                                                    window.location.reload();
+                                                    window.location.href = '/admin/3';
                                                 })
                                             }
                                         })
@@ -171,7 +171,7 @@ function TransactionScreen() {
                                                     'Your transaction has been approved.',
                                                     'success'
                                                 ).then((result) => {
-                                                    window.location.reload();
+                                                    window.location.href = '/admin/3';
                                                 })
                                             }
                                         })
@@ -194,7 +194,7 @@ function TransactionScreen() {
                                                     'Your transaction has been deleted.',
                                                     'success'
                                                 ).then((result) => {
-                                                    window.location.reload();
+                                                    window.location.href = '/admin/3';
                                                 })
                                             }
                                         })

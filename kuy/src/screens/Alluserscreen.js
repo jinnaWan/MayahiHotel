@@ -71,7 +71,7 @@ function Alluserscreen() {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user.isAdmin ? <Tag color="green">Yes</Tag> : <Tag color="volcano">No</Tag>}</td>
-                            <button className='btn btn-success' onClick={() => fetchUserData(user._id)}>View Details</button>
+                            <td className='text-center'><button className='btn btn-success' onClick={() => fetchUserData(user._id)}>View Details</button></td>
                         </tr>
                     }
                     )}
@@ -198,7 +198,7 @@ function Alluserscreen() {
                                             return <tr>
                                                 <td>{event.companyName}</td>
                                                 <td>{event.companyEmail}</td>
-                                                <td>{event.companyPhoneNumber}</td>
+                                                <td>{event.companyPhone}</td>
                                                 <td>{event.fromDate}</td>
                                                 <td>{event.toDate}</td>
                                                 <td>{event.eventDetails}</td>
