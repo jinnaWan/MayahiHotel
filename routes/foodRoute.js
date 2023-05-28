@@ -69,4 +69,29 @@ router.put("/cancelOrder", async(req, res)=>{
     }
 });
 
+router.get('/getFoodTypePopularity', async (req, res) => {
+    try {
+      const orders = await orderModel.find({});
+      const foodTypes = await foodModel.distinct('CategoryName');
+      const foodTypePopularity = {};
+  
+      foodTypes.forEach(foodType => {
+        foodTypePopularity[foodType] = 0;
+      });
+  
+      orders.forEach(order => {
+        order.orderitems.forEach(orderitem => {
+          foodTypePopularity[orderitem.category] += orderitem.count;
+        });
+      });
+  
+      return res.send(foodTypePopularity);
+    } catch (err) {
+      return res.status(400).send({ error: err.message });
+    }
+  });
+
+
+
+
 module.exports = router;

@@ -55,4 +55,25 @@ router.put("/returnBoardgame", async(req, res)=>{
     }
 });
 
+router.get("/getBoardgamePopularity", async(req, res)=>{
+    try{
+        const borrows = await borrowModel.find({});
+        const boardgames = await boardgameModel.distinct('CategoryName');
+        const boardgamePopularity = {};
+        boardgames.forEach(boardgame => {
+            boardgamePopularity[boardgame] = 0;
+        });
+        borrows.forEach(borrow => {
+            borrow.boardgames.forEach(boardgame => {
+                boardgamePopularity[boardgame.category] += boardgame.count;
+            });
+        });
+        return res.send(boardgamePopularity);
+    }catch(err){
+        return res.status(400).send({error: err});
+    }
+});
+
+
+
 module.exports = router;
