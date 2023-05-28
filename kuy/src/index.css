@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Raleway:wght@500&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Fugaz One', cursive !important;
+  font-family: 'Raleway', sans-serif !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar{
+  background-color: black !important;
+}
+
+.nav-link, .navbar-brand{
+  color: white !important;
+}
+
+.navbar-nav{
+  margin-left: auto !important;
+}
+
+.smallimg{
+  height: 200px;
+  width: 200px;
+  border-radius: 5px !important
+}
+
+h1{
+  font-size: 20px;
+}
+
+.btn{
+  background-color: black !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.bs{
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  margin-top: 20px !important;
+  margin-bottom: 5px !important;
+  padding: 20px !important;
+}
+
+.bigimg{
+  height: 400px;
+  width: 100% !important;
+  border-radius: 5px !important;
+}
+
+input,select{
+  box-shadow: none !important;
+  margin-top: 10px !important;
+  border-radius: 5px !important;
+  width: 100% !important;
+}
+
+h2{
+  font-size: 30px !important;
+  padding: 10px !important;
+  text-align: center !important;
+}
+
+.dropdown-toggle{
+  border: 0px solid black !important;
+}
+
+.photo{
+  height: 100% !important;
+  width: 50% !important;
+  border-radius: 5px !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing{
+  background-color: #f5f5f5 !important;
+  height: 100vh !important;
+  width: 100% !important;
+  padding-top: 150px !important;
+}
+
+.landingbtn{
+  background-color: black !important;
+  color: white !important;
+  margin-top: 20px !important;
+}
+
+.foodimg{
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.button1 {
+  border-radius: 10px;
+   background-color: black; /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 2px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .float-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.foodoption{
+  text-align: right !important;
+}
+
+.bigbtn{
+  background-color: black !important;
+  color: white !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  border-radius: 5px !important;
+  padding: 10px;
+}
+
+.smallbtn{
+  padding: 1px;
+}
+
+.morebtn {
+  background-color: none;
+  border: none;
+  color: none;
+  padding: none;
+  text-align: left;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.zoom {
+  padding: none;
+  transition: transform .2s; /* Animation */
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.5) translateX(-25%); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
