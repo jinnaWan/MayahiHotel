@@ -78,6 +78,7 @@ function Alluserscreen() {
                 </tbody>
             </table>
             <Modal show={show} onHide={handleClose}>
+                <div className='modal-content modal-container' style={{  width:"max-content",height: "max-content" }}>
                 <Modal.Header closeButton>
                     <Modal.Title>User Details</Modal.Title>
                 </Modal.Header>
@@ -224,6 +225,7 @@ function Alluserscreen() {
                         Close
                     </Button>
                 </Modal.Footer>
+                </div>
             </Modal>
         </div>
     )
